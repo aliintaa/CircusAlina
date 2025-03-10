@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище circusalinaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Role" Type="varchar" MaxLength="50" />
+          <Property Name="Specialization" Type="varchar" MaxLength="100" />
+          <Property Name="Skills" Type="text" />
+          <Property Name="Schedule" Type="text" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="InventoryID" />
+          </Key>
+          <Property Name="InventoryID" Type="int" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" MaxLength="100" />
+          <Property Name="Condition" Type="varchar" MaxLength="50" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="LastChecked" Type="date" />
+        </EntityType>
+        <EntityType Name="Repertoire">
+          <Key>
+            <PropertyRef Name="RepertoireID" />
+          </Key>
+          <Property Name="RepertoireID" Type="int" Nullable="false" />
+          <Property Name="ShowID" Type="int" />
+          <Property Name="PerformanceDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Shows">
+          <Key>
+            <PropertyRef Name="ShowID" />
+          </Key>
+          <Property Name="ShowID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Duration" Type="int" />
+          <Property Name="EquipmentRequired" Type="text" />
+        </EntityType>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="TicketID" />
+          </Key>
+          <Property Name="TicketID" Type="int" Nullable="false" />
+          <Property Name="ShowID" Type="int" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="TotalSeats" Type="int" />
+          <Property Name="AvailableSeats" Type="int" />
+        </EntityType>
+        <EntityType Name="TicketSales">
+          <Key>
+            <PropertyRef Name="SaleID" />
+          </Key>
+          <Property Name="SaleID" Type="int" Nullable="false" />
+          <Property Name="TicketID" Type="int" />
+          <Property Name="SaleDate" Type="datetime" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <Association Name="FK__Repertoir__ShowI__286302EC">
+          <End Role="Shows" Type="Self.Shows" Multiplicity="0..1" />
+          <End Role="Repertoire" Type="Self.Repertoire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shows">
+              <PropertyRef Name="ShowID" />
+            </Principal>
+            <Dependent Role="Repertoire">
+              <PropertyRef Name="ShowID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets__ShowID__2B3F6F97">
+          <End Role="Shows" Type="Self.Shows" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shows">
+              <PropertyRef Name="ShowID" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="ShowID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TicketSal__Ticke__2E1BDC42">
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="0..1" />
+          <End Role="TicketSales" Type="Self.TicketSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tickets">
+              <PropertyRef Name="TicketID" />
+            </Principal>
+            <Dependent Role="TicketSales">
+              <PropertyRef Name="TicketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище circusalinaModelContainer">
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Repertoire" EntityType="Self.Repertoire" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shows" EntityType="Self.Shows" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TicketSales" EntityType="Self.TicketSales" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Repertoir__ShowI__286302EC" Association="Self.FK__Repertoir__ShowI__286302EC">
+            <End Role="Shows" EntitySet="Shows" />
+            <End Role="Repertoire" EntitySet="Repertoire" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets__ShowID__2B3F6F97" Association="Self.FK__Tickets__ShowID__2B3F6F97">
+            <End Role="Shows" EntitySet="Shows" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TicketSal__Ticke__2E1BDC42" Association="Self.FK__TicketSal__Ticke__2E1BDC42">
+            <End Role="Tickets" EntitySet="Tickets" />
+            <End Role="TicketSales" EntitySet="TicketSales" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="circusalinaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Specialization" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Skills" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Schedule" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="InventoryID" />
+          </Key>
+          <Property Name="InventoryID" Type="Int32" Nullable="false" />
+          <Property Name="ItemName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Condition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="LastChecked" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Repertoire">
+          <Key>
+            <PropertyRef Name="RepertoireID" />
+          </Key>
+          <Property Name="RepertoireID" Type="Int32" Nullable="false" />
+          <Property Name="ShowID" Type="Int32" />
+          <Property Name="PerformanceDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Shows" Relationship="Self.FK__Repertoir__ShowI__286302EC" FromRole="Repertoire" ToRole="Shows" />
+        </EntityType>
+        <EntityType Name="Shows">
+          <Key>
+            <PropertyRef Name="ShowID" />
+          </Key>
+          <Property Name="ShowID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Duration" Type="Int32" />
+          <Property Name="EquipmentRequired" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Repertoire" Relationship="Self.FK__Repertoir__ShowI__286302EC" FromRole="Shows" ToRole="Repertoire" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK__Tickets__ShowID__2B3F6F97" FromRole="Shows" ToRole="Tickets" />
+        </EntityType>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="TicketID" />
+          </Key>
+          <Property Name="TicketID" Type="Int32" Nullable="false" />
+          <Property Name="ShowID" Type="Int32" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="TotalSeats" Type="Int32" />
+          <Property Name="AvailableSeats" Type="Int32" />
+          <NavigationProperty Name="Shows" Relationship="Self.FK__Tickets__ShowID__2B3F6F97" FromRole="Tickets" ToRole="Shows" />
+          <NavigationProperty Name="TicketSales" Relationship="Self.FK__TicketSal__Ticke__2E1BDC42" FromRole="Tickets" ToRole="TicketSales" />
+        </EntityType>
+        <EntityType Name="TicketSales">
+          <Key>
+            <PropertyRef Name="SaleID" />
+          </Key>
+          <Property Name="SaleID" Type="Int32" Nullable="false" />
+          <Property Name="TicketID" Type="Int32" />
+          <Property Name="SaleDate" Type="DateTime" Precision="3" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK__TicketSal__Ticke__2E1BDC42" FromRole="TicketSales" ToRole="Tickets" />
+        </EntityType>
+        <Association Name="FK__Repertoir__ShowI__286302EC">
+          <End Role="Shows" Type="Self.Shows" Multiplicity="0..1" />
+          <End Role="Repertoire" Type="Self.Repertoire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shows">
+              <PropertyRef Name="ShowID" />
+            </Principal>
+            <Dependent Role="Repertoire">
+              <PropertyRef Name="ShowID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets__ShowID__2B3F6F97">
+          <End Role="Shows" Type="Self.Shows" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shows">
+              <PropertyRef Name="ShowID" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="ShowID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TicketSal__Ticke__2E1BDC42">
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="0..1" />
+          <End Role="TicketSales" Type="Self.TicketSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tickets">
+              <PropertyRef Name="TicketID" />
+            </Principal>
+            <Dependent Role="TicketSales">
+              <PropertyRef Name="TicketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="circusalinaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="Self.Employees" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" />
+          <EntitySet Name="Repertoire" EntityType="Self.Repertoire" />
+          <EntitySet Name="Shows" EntityType="Self.Shows" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" />
+          <EntitySet Name="TicketSales" EntityType="Self.TicketSales" />
+          <AssociationSet Name="FK__Repertoir__ShowI__286302EC" Association="Self.FK__Repertoir__ShowI__286302EC">
+            <End Role="Shows" EntitySet="Shows" />
+            <End Role="Repertoire" EntitySet="Repertoire" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets__ShowID__2B3F6F97" Association="Self.FK__Tickets__ShowID__2B3F6F97">
+            <End Role="Shows" EntitySet="Shows" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TicketSal__Ticke__2E1BDC42" Association="Self.FK__TicketSal__Ticke__2E1BDC42">
+            <End Role="Tickets" EntitySet="Tickets" />
+            <End Role="TicketSales" EntitySet="TicketSales" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище circusalinaModelContainer" CdmEntityContainer="circusalinaEntities">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="circusalinaModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Specialization" ColumnName="Specialization" />
+                <ScalarProperty Name="Skills" ColumnName="Skills" />
+                <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventory">
+            <EntityTypeMapping TypeName="circusalinaModel.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="InventoryID" ColumnName="InventoryID" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="LastChecked" ColumnName="LastChecked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Repertoire">
+            <EntityTypeMapping TypeName="circusalinaModel.Repertoire">
+              <MappingFragment StoreEntitySet="Repertoire">
+                <ScalarProperty Name="RepertoireID" ColumnName="RepertoireID" />
+                <ScalarProperty Name="ShowID" ColumnName="ShowID" />
+                <ScalarProperty Name="PerformanceDate" ColumnName="PerformanceDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shows">
+            <EntityTypeMapping TypeName="circusalinaModel.Shows">
+              <MappingFragment StoreEntitySet="Shows">
+                <ScalarProperty Name="ShowID" ColumnName="ShowID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="EquipmentRequired" ColumnName="EquipmentRequired" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="circusalinaModel.Tickets">
+              <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+                <ScalarProperty Name="ShowID" ColumnName="ShowID" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TotalSeats" ColumnName="TotalSeats" />
+                <ScalarProperty Name="AvailableSeats" ColumnName="AvailableSeats" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TicketSales">
+            <EntityTypeMapping TypeName="circusalinaModel.TicketSales">
+              <MappingFragment StoreEntitySet="TicketSales">
+                <ScalarProperty Name="SaleID" ColumnName="SaleID" />
+                <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+                <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

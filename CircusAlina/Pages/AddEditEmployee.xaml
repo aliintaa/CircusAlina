@@ -1,0 +1,43 @@
+﻿<Page x:Class="CircusAlina.Pages.AddEditEmployee"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CircusAlina.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddEditEmployee">
+
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Text="Добавить/Редактировать Сотрудника" 
+                       FontSize="24" FontWeight="Bold" 
+                       Margin="0,0,0,20" HorizontalAlignment="Center" 
+                       Foreground="#333"/>
+
+            <Label Content="Имя:" FontWeight="Bold"/>
+            <TextBox x:Name="NameTextBox" Height="30" Margin="0,0,0,10" 
+                       Padding="5" FontSize="14" BorderBrush="#B0BEC5" 
+                       BorderThickness="1"/>
+
+            <Label Content="Роль:" FontWeight="Bold"/>
+            <TextBox x:Name="RoleTextBox" Height="30" Margin="0,0,0,10" 
+                       Padding="5" FontSize="14" BorderBrush="#B0BEC5" 
+                       BorderThickness="1"/>
+
+            <Label Content="Возраст:" FontWeight="Bold"/>
+            <TextBox x:Name="AgeTextBox" Height="30" Margin="0,0,0,20" 
+                       Padding="5" FontSize="14" BorderBrush="#B0BEC5" 
+                       BorderThickness="1"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Сохранить" Click="SaveButton_Click" Margin="5" 
+                        Width="100" Height="35" Background="#4CAF50" 
+                        Foreground="White" FontWeight="Bold"/>
+                <Button Content="Отмена" Click="CancelButton_Click" Margin="5" 
+                        Width="100" Height="35" Background="#F44336" 
+                        Foreground="White" FontWeight="Bold"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
