@@ -32,12 +32,12 @@
                 <Button Content="Добавить" Click="AddButton_Click" Margin="5" 
                     Width="100" Height="30" Background="#4CAF50" Foreground="White"
                     BorderBrush="#388E3C" BorderThickness="1" FontWeight="Bold"/>
-                <Button Content="Редактировать" Click="EditButton_Click" Margin="5" 
-                    Width="100" Height="30" Background="#2196F3" Foreground="White"
-                    BorderBrush="#1976D2" BorderThickness="1" FontWeight="Bold"/>
-                <Button Content="Удалить" Click="DeleteButton_Click" Margin="5" 
-                    Width="100" Height="30" Background="#F44336" Foreground="White"
-                    BorderBrush="#D32F2F" BorderThickness="1" FontWeight="Bold"/>
+            <Button Content="Редактировать" Click="EditButton_Click"  Margin="5" 
+                    Width="100" Height="30" Background="#4CAF50" Foreground="White"
+                    BorderBrush="#388E3C" BorderThickness="1" FontWeight="Bold"/>
+            <Button Content="Удалить" Click="DeleteButton_Click" Margin="5" 
+                    Width="100" Height="30" Background="#4CAF50" Foreground="White"
+                    BorderBrush="#388E3C" BorderThickness="1" FontWeight="Bold"/>
             </StackPanel>
         </Grid>
 </Page>

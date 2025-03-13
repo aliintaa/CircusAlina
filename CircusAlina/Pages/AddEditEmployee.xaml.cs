@@ -45,8 +45,9 @@ namespace CircusAlina.Pages
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-        DialogResult = false; // Закрываем окно с результатом "Отмена"
-        Close();
+            DialogResult = false; // Закрываем окно с результатом "Отмена"
+            Close();
+        }
     }
-  }
+}
 

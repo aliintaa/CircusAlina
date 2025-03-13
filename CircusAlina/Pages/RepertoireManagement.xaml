@@ -8,7 +8,32 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RepertoireManagement">
 
-    <Grid>
-        
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Content="Добавить шоу" Click="AddShowButton_Click"  Margin="5" 
+                    Width="100" Height="30" Background="#4CAF50" Foreground="White"
+                    BorderBrush="#388E3C" BorderThickness="1" FontWeight="Bold" />
+            <Button Content="Редактировать шоу" Click="EditShowButton_Click"  Margin="5" 
+                    Width="100" Height="30" Background="#4CAF50" Foreground="White"
+                    BorderBrush="#388E3C" BorderThickness="1" FontWeight="Bold" />
+            <Button Content="Удалить шоу" Click="DeleteShowButton_Click" Margin="5" 
+                    Width="100" Height="30" Background="#4CAF50" Foreground="White"
+                    BorderBrush="#388E3C" BorderThickness="1" FontWeight="Bold" />
+        </StackPanel>
+
+        <DataGrid x:Name="RepertoireDataGrid" AutoGenerateColumns="False" 
+                  Grid.Row="1" SelectionMode="Single" SelectionUnit="FullRow"
+                  CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding Title}" Width="*"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="2*"/>
+                <DataGridTextColumn Header="Продолжительность (мин)" Binding="{Binding Duration}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

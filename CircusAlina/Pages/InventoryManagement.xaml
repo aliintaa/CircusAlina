@@ -8,7 +8,38 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="InventoryManagement">
 
-    <Grid>
-        
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Управление инвентарем" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+
+            <DataGrid x:Name="InventoryDataGrid" AutoGenerateColumns="False" 
+                      CanUserAddRows="False" 
+                      IsReadOnly="True" 
+                      SelectionMode="Single" 
+                      Margin="0,0,0,20">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*"/>
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="*"/>
+                    <DataGridTextColumn Header="Описание" Binding="{Binding Description}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <TextBlock Text="Добавить новый инвентарь" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+            <StackPanel Orientation="Vertical">
+                <TextBox x:Name="NameTextBox"  Margin="0,0,0,10">Название</TextBox>
+                <TextBox x:Name="QuantityTextBox"  Margin="0,0,0,10">Количество</TextBox>
+                <TextBox x:Name="DescriptionTextBox" Margin="0,0,0,10">Описание</TextBox>
+
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button Content="Добавить инвентарь" Click="AddInventoryButton_Click" Margin="5" 
+                        Width="150" Height="35" Background="#4CAF50" 
+                        Foreground="White" FontWeight="Bold"/>
+                    <Button Content="Удалить инвентарь" Click="DeleteInventoryButton_Click" Margin="5" 
+                        Width="150" Height="35" Background="#4CAF50" 
+                        Foreground="White" FontWeight="Bold"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

@@ -34,9 +34,9 @@
                 <Button Content="Сохранить" Click="SaveButton_Click" Margin="5" 
                         Width="100" Height="35" Background="#4CAF50" 
                         Foreground="White" FontWeight="Bold"/>
-                <Button Content="Отмена" Click="CancelButton_Click" Margin="5" 
-                        Width="100" Height="35" Background="#F44336" 
-                        Foreground="White" FontWeight="Bold"/>
+                <Button Content="Отмена" Click="CancelButton_Click"  Margin="5" 
+                    Width="100" Height="30" Background="#4CAF50" Foreground="White"
+                    BorderBrush="#388E3C" BorderThickness="1" FontWeight="Bold"/>
             </StackPanel>
         </StackPanel>
     </Grid>
